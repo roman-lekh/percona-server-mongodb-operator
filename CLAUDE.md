@@ -51,8 +51,9 @@ MongoDB. This file focuses on the automation testing part.
   the kind docker network) and set
   `IMAGE=kind-registry:5000/percona-server-mongodb-operator:<branch>`.
 - `IMAGE_BACKUP` defaults to `perconalab/...:main-backup` (PBM main).
-- `SKIP_DELETE=1` is default: namespaces survive test runs, clean with
-  `kubectl get ns` + delete manually.
+- `SKIP_DELETE=0` is default (`e2e-tests/functions`): the test namespace
+  is destroyed at the end of a run. Set `SKIP_DELETE=1` to keep it for
+  debugging, then clean with `kubectl get ns` + delete manually.
 - Single test: `./e2e-tests/<name>/run` with env vars set.
 - Pytest port (branch pr-2058): `uv sync` (Python >=3.13), then
   `uv run pytest` from repo root.
